@@ -13,7 +13,7 @@ public class IndexController {
 
     @RequestMapping("/index")
     public String index(){
-        String index ="version:"+systemAttribute.getVersion()+"   description:"+systemAttribute.getDescription();
+        String index ="  version:"+systemAttribute.getVersion()+"   description:"+systemAttribute.getDescription();
         return index ;
     }
 }
