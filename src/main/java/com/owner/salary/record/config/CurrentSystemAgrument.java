@@ -9,8 +9,9 @@ import java.util.List;
 public class CurrentSystemAgrument {
 
     public CurrentSystemAgrument(ApplicationArguments applicationArguments){
-        List<String> nonOptionArgs = applicationArguments.getNonOptionArgs();
-        for(String str:nonOptionArgs){
+        boolean debug = applicationArguments.containsOption("debug");
+        List<String> files = applicationArguments.getNonOptionArgs();
+        for(String str:files){
             System.out.println(str);
         }
     }

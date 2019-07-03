@@ -1,0 +1,625 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.owner.salary.record.mapper.WorkOrderMapper">
+  <resultMap id="BaseResultMap" type="com.owner.salary.record.model.WorkOrder">
+    <id column="ORDER_ID" jdbcType="DECIMAL" property="orderId" />
+    <result column="WORKORDER_ID" jdbcType="VARCHAR" property="workorderId" />
+    <result column="SERIAL_NO" jdbcType="VARCHAR" property="serialNo" />
+    <result column="WORKNUM" jdbcType="DECIMAL" property="worknum" />
+    <result column="ORDER_TYPE" jdbcType="VARCHAR" property="orderType" />
+    <result column="ORDER_SERIAL" jdbcType="VARCHAR" property="orderSerial" />
+    <result column="ORDER_STATUS" jdbcType="VARCHAR" property="orderStatus" />
+    <result column="ORDER_SPART" jdbcType="VARCHAR" property="orderSpart" />
+    <result column="ISAVILIABLE" jdbcType="CHAR" property="isaviliable" />
+    <result column="MATERIAL_ID" jdbcType="VARCHAR" property="materialId" />
+    <result column="MATERIAL_NAME" jdbcType="VARCHAR" property="materialName" />
+    <result column="MATERIEL_TYPE" jdbcType="VARCHAR" property="materielType" />
+    <result column="WORK_STARTDATE" jdbcType="TIMESTAMP" property="workStartdate" />
+    <result column="WORK_ENDDATE" jdbcType="TIMESTAMP" property="workEnddate" />
+    <result column="DEPT_ID" jdbcType="VARCHAR" property="deptId" />
+    <result column="STOCK_ADD" jdbcType="VARCHAR" property="stockAdd" />
+    <result column="CREATE_USERID" jdbcType="VARCHAR" property="createUserid" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="MODIFY_USERID" jdbcType="VARCHAR" property="modifyUserid" />
+    <result column="MODIFY_TIME" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="PRODUCTCONFIG" jdbcType="VARCHAR" property="productconfig" />
+    <result column="ISCOMPLETE" jdbcType="CHAR" property="iscomplete" />
+    <result column="ISBEGIN" jdbcType="CHAR" property="isbegin" />
+    <result column="BEGIN_TIME" jdbcType="TIMESTAMP" property="beginTime" />
+    <result column="COMPLETE_TIME" jdbcType="TIMESTAMP" property="completeTime" />
+    <result column="SPECIAL_CONFIG" jdbcType="VARCHAR" property="specialConfig" />
+    <result column="CHECKINRULE" jdbcType="CHAR" property="checkinrule" />
+    <result column="PRODUCT_LINE_ID" jdbcType="DECIMAL" property="productLineId" />
+    <result column="ISHAVEQB" jdbcType="CHAR" property="ishaveqb" />
+    <result column="ORDER_BARCODE" jdbcType="VARCHAR" property="orderBarcode" />
+    <result column="OLD_MATERIAL_ID" jdbcType="VARCHAR" property="oldMaterialId" />
+    <result column="PRODUCT_CONTROLLER_CODE" jdbcType="VARCHAR" property="productControllerCode" />
+    <result column="ORDER_UNIT" jdbcType="VARCHAR" property="orderUnit" />
+    <result column="DELIVER_POINT" jdbcType="VARCHAR" property="deliverPoint" />
+    <result column="MRP_CONTROLLER" jdbcType="VARCHAR" property="mrpController" />
+    <result column="TECHFLOW_VERSION_NO" jdbcType="VARCHAR" property="techflowVersionNo" />
+    <result column="SUB_LINE_ID" jdbcType="DECIMAL" property="subLineId" />
+    <result column="SAP_RUKU_TIME" jdbcType="TIMESTAMP" property="sapRukuTime" />
+    <result column="PICI_NUM" jdbcType="VARCHAR" property="piciNum" />
+    <result column="ORDER_VIN" jdbcType="VARCHAR" property="orderVin" />
+    <result column="CONSIGNEE" jdbcType="VARCHAR" property="consignee" />
+    <result column="ORDER_FLAG" jdbcType="VARCHAR" property="orderFlag" />
+    <result column="KEY_PART" jdbcType="VARCHAR" property="keyPart" />
+    <result column="SAP_RUKU_DATETIME" jdbcType="VARCHAR" property="sapRukuDatetime" />
+    <result column="SAP_RUKU_ADDR" jdbcType="VARCHAR" property="sapRukuAddr" />
+    <result column="MATERIAL_UNIT" jdbcType="VARCHAR" property="materialUnit" />
+    <result column="FORCE_STOCKIN_FLAG" jdbcType="CHAR" property="forceStockinFlag" />
+    <result column="SAP_PLAN_CREATER" jdbcType="NVARCHAR" property="sapPlanCreater" />
+    <result column="BARCODE_PERSON" jdbcType="VARCHAR" property="barcodePerson" />
+    <result column="URGENCY_FLG" jdbcType="CHAR" property="urgencyFlg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ORDER_ID, WORKORDER_ID, SERIAL_NO, WORKNUM, ORDER_TYPE, ORDER_SERIAL, ORDER_STATUS,
+    ORDER_SPART, ISAVILIABLE, MATERIAL_ID, MATERIAL_NAME, MATERIEL_TYPE, WORK_STARTDATE,
+    WORK_ENDDATE, DEPT_ID, STOCK_ADD, CREATE_USERID, CREATE_TIME, MODIFY_USERID, MODIFY_TIME,
+    PRODUCTCONFIG, ISCOMPLETE, ISBEGIN, BEGIN_TIME, COMPLETE_TIME, SPECIAL_CONFIG, CHECKINRULE,
+    PRODUCT_LINE_ID, ISHAVEQB, ORDER_BARCODE, OLD_MATERIAL_ID, PRODUCT_CONTROLLER_CODE,
+    ORDER_UNIT, DELIVER_POINT, MRP_CONTROLLER, TECHFLOW_VERSION_NO, SUB_LINE_ID, SAP_RUKU_TIME,
+    PICI_NUM, ORDER_VIN, CONSIGNEE, ORDER_FLAG, KEY_PART, SAP_RUKU_DATETIME, SAP_RUKU_ADDR,
+    MATERIAL_UNIT, FORCE_STOCKIN_FLAG, SAP_PLAN_CREATER, BARCODE_PERSON, URGENCY_FLG
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from OP_WORKORDER_5802
+    where ORDER_ID = #{orderId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from OP_WORKORDER_5802
+    where ORDER_ID = #{orderId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.owner.salary.record.model.WorkOrder">
+    insert into OP_WORKORDER_5802 (ORDER_ID, WORKORDER_ID, SERIAL_NO,
+      WORKNUM, ORDER_TYPE, ORDER_SERIAL,
+      ORDER_STATUS, ORDER_SPART, ISAVILIABLE,
+      MATERIAL_ID, MATERIAL_NAME, MATERIEL_TYPE,
+      WORK_STARTDATE, WORK_ENDDATE, DEPT_ID,
+      STOCK_ADD, CREATE_USERID, CREATE_TIME,
+      MODIFY_USERID, MODIFY_TIME, PRODUCTCONFIG,
+      ISCOMPLETE, ISBEGIN, BEGIN_TIME,
+      COMPLETE_TIME, SPECIAL_CONFIG, CHECKINRULE,
+      PRODUCT_LINE_ID, ISHAVEQB, ORDER_BARCODE,
+      OLD_MATERIAL_ID, PRODUCT_CONTROLLER_CODE, ORDER_UNIT,
+      DELIVER_POINT, MRP_CONTROLLER, TECHFLOW_VERSION_NO,
+      SUB_LINE_ID, SAP_RUKU_TIME, PICI_NUM,
+      ORDER_VIN, CONSIGNEE, ORDER_FLAG,
+      KEY_PART, SAP_RUKU_DATETIME, SAP_RUKU_ADDR,
+      MATERIAL_UNIT, FORCE_STOCKIN_FLAG, SAP_PLAN_CREATER,
+      BARCODE_PERSON, URGENCY_FLG)
+    values (#{orderId,jdbcType=DECIMAL}, #{workorderId,jdbcType=VARCHAR}, #{serialNo,jdbcType=VARCHAR},
+      #{worknum,jdbcType=DECIMAL}, #{orderType,jdbcType=VARCHAR}, #{orderSerial,jdbcType=VARCHAR},
+      #{orderStatus,jdbcType=VARCHAR}, #{orderSpart,jdbcType=VARCHAR}, #{isaviliable,jdbcType=CHAR},
+      #{materialId,jdbcType=VARCHAR}, #{materialName,jdbcType=VARCHAR}, #{materielType,jdbcType=VARCHAR},
+      #{workStartdate,jdbcType=TIMESTAMP}, #{workEnddate,jdbcType=TIMESTAMP}, #{deptId,jdbcType=VARCHAR},
+      #{stockAdd,jdbcType=VARCHAR}, #{createUserid,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+      #{modifyUserid,jdbcType=VARCHAR}, #{modifyTime,jdbcType=TIMESTAMP}, #{productconfig,jdbcType=VARCHAR},
+      #{iscomplete,jdbcType=CHAR}, #{isbegin,jdbcType=CHAR}, #{beginTime,jdbcType=TIMESTAMP},
+      #{completeTime,jdbcType=TIMESTAMP}, #{specialConfig,jdbcType=VARCHAR}, #{checkinrule,jdbcType=CHAR},
+      #{productLineId,jdbcType=DECIMAL}, #{ishaveqb,jdbcType=CHAR}, #{orderBarcode,jdbcType=VARCHAR},
+      #{oldMaterialId,jdbcType=VARCHAR}, #{productControllerCode,jdbcType=VARCHAR}, #{orderUnit,jdbcType=VARCHAR},
+      #{deliverPoint,jdbcType=VARCHAR}, #{mrpController,jdbcType=VARCHAR}, #{techflowVersionNo,jdbcType=VARCHAR},
+      #{subLineId,jdbcType=DECIMAL}, #{sapRukuTime,jdbcType=TIMESTAMP}, #{piciNum,jdbcType=VARCHAR},
+      #{orderVin,jdbcType=VARCHAR}, #{consignee,jdbcType=VARCHAR}, #{orderFlag,jdbcType=VARCHAR},
+      #{keyPart,jdbcType=VARCHAR}, #{sapRukuDatetime,jdbcType=VARCHAR}, #{sapRukuAddr,jdbcType=VARCHAR},
+      #{materialUnit,jdbcType=VARCHAR}, #{forceStockinFlag,jdbcType=CHAR}, #{sapPlanCreater,jdbcType=NVARCHAR},
+      #{barcodePerson,jdbcType=VARCHAR}, #{urgencyFlg,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.owner.salary.record.model.WorkOrder">
+    insert into OP_WORKORDER_5802
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        ORDER_ID,
+      </if>
+      <if test="workorderId != null">
+        WORKORDER_ID,
+      </if>
+      <if test="serialNo != null">
+        SERIAL_NO,
+      </if>
+      <if test="worknum != null">
+        WORKNUM,
+      </if>
+      <if test="orderType != null">
+        ORDER_TYPE,
+      </if>
+      <if test="orderSerial != null">
+        ORDER_SERIAL,
+      </if>
+      <if test="orderStatus != null">
+        ORDER_STATUS,
+      </if>
+      <if test="orderSpart != null">
+        ORDER_SPART,
+      </if>
+      <if test="isaviliable != null">
+        ISAVILIABLE,
+      </if>
+      <if test="materialId != null">
+        MATERIAL_ID,
+      </if>
+      <if test="materialName != null">
+        MATERIAL_NAME,
+      </if>
+      <if test="materielType != null">
+        MATERIEL_TYPE,
+      </if>
+      <if test="workStartdate != null">
+        WORK_STARTDATE,
+      </if>
+      <if test="workEnddate != null">
+        WORK_ENDDATE,
+      </if>
+      <if test="deptId != null">
+        DEPT_ID,
+      </if>
+      <if test="stockAdd != null">
+        STOCK_ADD,
+      </if>
+      <if test="createUserid != null">
+        CREATE_USERID,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+      <if test="modifyUserid != null">
+        MODIFY_USERID,
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME,
+      </if>
+      <if test="productconfig != null">
+        PRODUCTCONFIG,
+      </if>
+      <if test="iscomplete != null">
+        ISCOMPLETE,
+      </if>
+      <if test="isbegin != null">
+        ISBEGIN,
+      </if>
+      <if test="beginTime != null">
+        BEGIN_TIME,
+      </if>
+      <if test="completeTime != null">
+        COMPLETE_TIME,
+      </if>
+      <if test="specialConfig != null">
+        SPECIAL_CONFIG,
+      </if>
+      <if test="checkinrule != null">
+        CHECKINRULE,
+      </if>
+      <if test="productLineId != null">
+        PRODUCT_LINE_ID,
+      </if>
+      <if test="ishaveqb != null">
+        ISHAVEQB,
+      </if>
+      <if test="orderBarcode != null">
+        ORDER_BARCODE,
+      </if>
+      <if test="oldMaterialId != null">
+        OLD_MATERIAL_ID,
+      </if>
+      <if test="productControllerCode != null">
+        PRODUCT_CONTROLLER_CODE,
+      </if>
+      <if test="orderUnit != null">
+        ORDER_UNIT,
+      </if>
+      <if test="deliverPoint != null">
+        DELIVER_POINT,
+      </if>
+      <if test="mrpController != null">
+        MRP_CONTROLLER,
+      </if>
+      <if test="techflowVersionNo != null">
+        TECHFLOW_VERSION_NO,
+      </if>
+      <if test="subLineId != null">
+        SUB_LINE_ID,
+      </if>
+      <if test="sapRukuTime != null">
+        SAP_RUKU_TIME,
+      </if>
+      <if test="piciNum != null">
+        PICI_NUM,
+      </if>
+      <if test="orderVin != null">
+        ORDER_VIN,
+      </if>
+      <if test="consignee != null">
+        CONSIGNEE,
+      </if>
+      <if test="orderFlag != null">
+        ORDER_FLAG,
+      </if>
+      <if test="keyPart != null">
+        KEY_PART,
+      </if>
+      <if test="sapRukuDatetime != null">
+        SAP_RUKU_DATETIME,
+      </if>
+      <if test="sapRukuAddr != null">
+        SAP_RUKU_ADDR,
+      </if>
+      <if test="materialUnit != null">
+        MATERIAL_UNIT,
+      </if>
+      <if test="forceStockinFlag != null">
+        FORCE_STOCKIN_FLAG,
+      </if>
+      <if test="sapPlanCreater != null">
+        SAP_PLAN_CREATER,
+      </if>
+      <if test="barcodePerson != null">
+        BARCODE_PERSON,
+      </if>
+      <if test="urgencyFlg != null">
+        URGENCY_FLG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderId != null">
+        #{orderId,jdbcType=DECIMAL},
+      </if>
+      <if test="workorderId != null">
+        #{workorderId,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNo != null">
+        #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="worknum != null">
+        #{worknum,jdbcType=DECIMAL},
+      </if>
+      <if test="orderType != null">
+        #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSerial != null">
+        #{orderSerial,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSpart != null">
+        #{orderSpart,jdbcType=VARCHAR},
+      </if>
+      <if test="isaviliable != null">
+        #{isaviliable,jdbcType=CHAR},
+      </if>
+      <if test="materialId != null">
+        #{materialId,jdbcType=VARCHAR},
+      </if>
+      <if test="materialName != null">
+        #{materialName,jdbcType=VARCHAR},
+      </if>
+      <if test="materielType != null">
+        #{materielType,jdbcType=VARCHAR},
+      </if>
+      <if test="workStartdate != null">
+        #{workStartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workEnddate != null">
+        #{workEnddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deptId != null">
+        #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="stockAdd != null">
+        #{stockAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserid != null">
+        #{createUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserid != null">
+        #{modifyUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productconfig != null">
+        #{productconfig,jdbcType=VARCHAR},
+      </if>
+      <if test="iscomplete != null">
+        #{iscomplete,jdbcType=CHAR},
+      </if>
+      <if test="isbegin != null">
+        #{isbegin,jdbcType=CHAR},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null">
+        #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="specialConfig != null">
+        #{specialConfig,jdbcType=VARCHAR},
+      </if>
+      <if test="checkinrule != null">
+        #{checkinrule,jdbcType=CHAR},
+      </if>
+      <if test="productLineId != null">
+        #{productLineId,jdbcType=DECIMAL},
+      </if>
+      <if test="ishaveqb != null">
+        #{ishaveqb,jdbcType=CHAR},
+      </if>
+      <if test="orderBarcode != null">
+        #{orderBarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="oldMaterialId != null">
+        #{oldMaterialId,jdbcType=VARCHAR},
+      </if>
+      <if test="productControllerCode != null">
+        #{productControllerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUnit != null">
+        #{orderUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverPoint != null">
+        #{deliverPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="mrpController != null">
+        #{mrpController,jdbcType=VARCHAR},
+      </if>
+      <if test="techflowVersionNo != null">
+        #{techflowVersionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="subLineId != null">
+        #{subLineId,jdbcType=DECIMAL},
+      </if>
+      <if test="sapRukuTime != null">
+        #{sapRukuTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="piciNum != null">
+        #{piciNum,jdbcType=VARCHAR},
+      </if>
+      <if test="orderVin != null">
+        #{orderVin,jdbcType=VARCHAR},
+      </if>
+      <if test="consignee != null">
+        #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="orderFlag != null">
+        #{orderFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="keyPart != null">
+        #{keyPart,jdbcType=VARCHAR},
+      </if>
+      <if test="sapRukuDatetime != null">
+        #{sapRukuDatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="sapRukuAddr != null">
+        #{sapRukuAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="materialUnit != null">
+        #{materialUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="forceStockinFlag != null">
+        #{forceStockinFlag,jdbcType=CHAR},
+      </if>
+      <if test="sapPlanCreater != null">
+        #{sapPlanCreater,jdbcType=NVARCHAR},
+      </if>
+      <if test="barcodePerson != null">
+        #{barcodePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="urgencyFlg != null">
+        #{urgencyFlg,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.owner.salary.record.model.WorkOrder">
+    update OP_WORKORDER_5802
+    <set>
+      <if test="workorderId != null">
+        WORKORDER_ID = #{workorderId,jdbcType=VARCHAR},
+      </if>
+      <if test="serialNo != null">
+        SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      </if>
+      <if test="worknum != null">
+        WORKNUM = #{worknum,jdbcType=DECIMAL},
+      </if>
+      <if test="orderType != null">
+        ORDER_TYPE = #{orderType,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSerial != null">
+        ORDER_SERIAL = #{orderSerial,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null">
+        ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSpart != null">
+        ORDER_SPART = #{orderSpart,jdbcType=VARCHAR},
+      </if>
+      <if test="isaviliable != null">
+        ISAVILIABLE = #{isaviliable,jdbcType=CHAR},
+      </if>
+      <if test="materialId != null">
+        MATERIAL_ID = #{materialId,jdbcType=VARCHAR},
+      </if>
+      <if test="materialName != null">
+        MATERIAL_NAME = #{materialName,jdbcType=VARCHAR},
+      </if>
+      <if test="materielType != null">
+        MATERIEL_TYPE = #{materielType,jdbcType=VARCHAR},
+      </if>
+      <if test="workStartdate != null">
+        WORK_STARTDATE = #{workStartdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="workEnddate != null">
+        WORK_ENDDATE = #{workEnddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deptId != null">
+        DEPT_ID = #{deptId,jdbcType=VARCHAR},
+      </if>
+      <if test="stockAdd != null">
+        STOCK_ADD = #{stockAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserid != null">
+        CREATE_USERID = #{createUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyUserid != null">
+        MODIFY_USERID = #{modifyUserid,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="productconfig != null">
+        PRODUCTCONFIG = #{productconfig,jdbcType=VARCHAR},
+      </if>
+      <if test="iscomplete != null">
+        ISCOMPLETE = #{iscomplete,jdbcType=CHAR},
+      </if>
+      <if test="isbegin != null">
+        ISBEGIN = #{isbegin,jdbcType=CHAR},
+      </if>
+      <if test="beginTime != null">
+        BEGIN_TIME = #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="completeTime != null">
+        COMPLETE_TIME = #{completeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="specialConfig != null">
+        SPECIAL_CONFIG = #{specialConfig,jdbcType=VARCHAR},
+      </if>
+      <if test="checkinrule != null">
+        CHECKINRULE = #{checkinrule,jdbcType=CHAR},
+      </if>
+      <if test="productLineId != null">
+        PRODUCT_LINE_ID = #{productLineId,jdbcType=DECIMAL},
+      </if>
+      <if test="ishaveqb != null">
+        ISHAVEQB = #{ishaveqb,jdbcType=CHAR},
+      </if>
+      <if test="orderBarcode != null">
+        ORDER_BARCODE = #{orderBarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="oldMaterialId != null">
+        OLD_MATERIAL_ID = #{oldMaterialId,jdbcType=VARCHAR},
+      </if>
+      <if test="productControllerCode != null">
+        PRODUCT_CONTROLLER_CODE = #{productControllerCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderUnit != null">
+        ORDER_UNIT = #{orderUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverPoint != null">
+        DELIVER_POINT = #{deliverPoint,jdbcType=VARCHAR},
+      </if>
+      <if test="mrpController != null">
+        MRP_CONTROLLER = #{mrpController,jdbcType=VARCHAR},
+      </if>
+      <if test="techflowVersionNo != null">
+        TECHFLOW_VERSION_NO = #{techflowVersionNo,jdbcType=VARCHAR},
+      </if>
+      <if test="subLineId != null">
+        SUB_LINE_ID = #{subLineId,jdbcType=DECIMAL},
+      </if>
+      <if test="sapRukuTime != null">
+        SAP_RUKU_TIME = #{sapRukuTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="piciNum != null">
+        PICI_NUM = #{piciNum,jdbcType=VARCHAR},
+      </if>
+      <if test="orderVin != null">
+        ORDER_VIN = #{orderVin,jdbcType=VARCHAR},
+      </if>
+      <if test="consignee != null">
+        CONSIGNEE = #{consignee,jdbcType=VARCHAR},
+      </if>
+      <if test="orderFlag != null">
+        ORDER_FLAG = #{orderFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="keyPart != null">
+        KEY_PART = #{keyPart,jdbcType=VARCHAR},
+      </if>
+      <if test="sapRukuDatetime != null">
+        SAP_RUKU_DATETIME = #{sapRukuDatetime,jdbcType=VARCHAR},
+      </if>
+      <if test="sapRukuAddr != null">
+        SAP_RUKU_ADDR = #{sapRukuAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="materialUnit != null">
+        MATERIAL_UNIT = #{materialUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="forceStockinFlag != null">
+        FORCE_STOCKIN_FLAG = #{forceStockinFlag,jdbcType=CHAR},
+      </if>
+      <if test="sapPlanCreater != null">
+        SAP_PLAN_CREATER = #{sapPlanCreater,jdbcType=NVARCHAR},
+      </if>
+      <if test="barcodePerson != null">
+        BARCODE_PERSON = #{barcodePerson,jdbcType=VARCHAR},
+      </if>
+      <if test="urgencyFlg != null">
+        URGENCY_FLG = #{urgencyFlg,jdbcType=CHAR},
+      </if>
+    </set>
+    where ORDER_ID = #{orderId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.owner.salary.record.model.WorkOrder">
+    update OP_WORKORDER_5802
+    set WORKORDER_ID = #{workorderId,jdbcType=VARCHAR},
+      SERIAL_NO = #{serialNo,jdbcType=VARCHAR},
+      WORKNUM = #{worknum,jdbcType=DECIMAL},
+      ORDER_TYPE = #{orderType,jdbcType=VARCHAR},
+      ORDER_SERIAL = #{orderSerial,jdbcType=VARCHAR},
+      ORDER_STATUS = #{orderStatus,jdbcType=VARCHAR},
+      ORDER_SPART = #{orderSpart,jdbcType=VARCHAR},
+      ISAVILIABLE = #{isaviliable,jdbcType=CHAR},
+      MATERIAL_ID = #{materialId,jdbcType=VARCHAR},
+      MATERIAL_NAME = #{materialName,jdbcType=VARCHAR},
+      MATERIEL_TYPE = #{materielType,jdbcType=VARCHAR},
+      WORK_STARTDATE = #{workStartdate,jdbcType=TIMESTAMP},
+      WORK_ENDDATE = #{workEnddate,jdbcType=TIMESTAMP},
+      DEPT_ID = #{deptId,jdbcType=VARCHAR},
+      STOCK_ADD = #{stockAdd,jdbcType=VARCHAR},
+      CREATE_USERID = #{createUserid,jdbcType=VARCHAR},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      MODIFY_USERID = #{modifyUserid,jdbcType=VARCHAR},
+      MODIFY_TIME = #{modifyTime,jdbcType=TIMESTAMP},
+      PRODUCTCONFIG = #{productconfig,jdbcType=VARCHAR},
+      ISCOMPLETE = #{iscomplete,jdbcType=CHAR},
+      ISBEGIN = #{isbegin,jdbcType=CHAR},
+      BEGIN_TIME = #{beginTime,jdbcType=TIMESTAMP},
+      COMPLETE_TIME = #{completeTime,jdbcType=TIMESTAMP},
+      SPECIAL_CONFIG = #{specialConfig,jdbcType=VARCHAR},
+      CHECKINRULE = #{checkinrule,jdbcType=CHAR},
+      PRODUCT_LINE_ID = #{productLineId,jdbcType=DECIMAL},
+      ISHAVEQB = #{ishaveqb,jdbcType=CHAR},
+      ORDER_BARCODE = #{orderBarcode,jdbcType=VARCHAR},
+      OLD_MATERIAL_ID = #{oldMaterialId,jdbcType=VARCHAR},
+      PRODUCT_CONTROLLER_CODE = #{productControllerCode,jdbcType=VARCHAR},
+      ORDER_UNIT = #{orderUnit,jdbcType=VARCHAR},
+      DELIVER_POINT = #{deliverPoint,jdbcType=VARCHAR},
+      MRP_CONTROLLER = #{mrpController,jdbcType=VARCHAR},
+      TECHFLOW_VERSION_NO = #{techflowVersionNo,jdbcType=VARCHAR},
+      SUB_LINE_ID = #{subLineId,jdbcType=DECIMAL},
+      SAP_RUKU_TIME = #{sapRukuTime,jdbcType=TIMESTAMP},
+      PICI_NUM = #{piciNum,jdbcType=VARCHAR},
+      ORDER_VIN = #{orderVin,jdbcType=VARCHAR},
+      CONSIGNEE = #{consignee,jdbcType=VARCHAR},
+      ORDER_FLAG = #{orderFlag,jdbcType=VARCHAR},
+      KEY_PART = #{keyPart,jdbcType=VARCHAR},
+      SAP_RUKU_DATETIME = #{sapRukuDatetime,jdbcType=VARCHAR},
+      SAP_RUKU_ADDR = #{sapRukuAddr,jdbcType=VARCHAR},
+      MATERIAL_UNIT = #{materialUnit,jdbcType=VARCHAR},
+      FORCE_STOCKIN_FLAG = #{forceStockinFlag,jdbcType=CHAR},
+      SAP_PLAN_CREATER = #{sapPlanCreater,jdbcType=NVARCHAR},
+      BARCODE_PERSON = #{barcodePerson,jdbcType=VARCHAR},
+      URGENCY_FLG = #{urgencyFlg,jdbcType=CHAR}
+    where ORDER_ID = #{orderId,jdbcType=DECIMAL}
+  </update>
+</mapper>
